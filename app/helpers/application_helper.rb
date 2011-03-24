@@ -14,4 +14,6 @@ module ApplicationHelper
     # Fill in.
 	logo = image_tag("logo.png", :alt => "Sample App", :class => "round")	
    end
+
+
 end

@@ -26,6 +26,18 @@ describe UsersController do
 #      response.should have_selector("h1>img", :class => "gravatar")
 #    end
 
+     it "should have a name field" do
+       get :new
+       response.should have_selector("input[name='user[name]'][type='text']")
+     end
+
+     it "should have an email field"
+
+     it "should have a password field"
+
+     it "should have a password confirmation field"
+  end
+
   end
   
 describe "POST 'create'" do
@@ -67,6 +79,10 @@ describe "POST 'create'" do
           post :create, :user => @attr
         end.should change(User, :count).by(1)
       end
+       it "should sign the user in" do
+        post :create, :user => @attr
+        controller.should be_signed_in
+      end
 
       it "should redirect to the user show page" do
         post :create, :user => @attr
@@ -77,6 +93,3 @@ describe "POST 'create'" do
         flash[:success].should =~ /welcome to the sample app/i
       end    
     end
-end
-
-end
